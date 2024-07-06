@@ -13,10 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.stardust.app.OnActivityResultDelegate;
-import com.stardust.autojs.core.permission.OnRequestPermissionsResultCallback;
-import com.stardust.autojs.core.permission.PermissionRequestProxyActivity;
-import com.stardust.autojs.core.permission.RequestPermissionCallbacks;
-import com.stardust.autojs.execution.ScriptExecution;
+import com.stardust.atjs.core.permission.OnRequestPermissionsResultCallback;
+import com.stardust.atjs.core.permission.PermissionRequestProxyActivity;
+import com.stardust.atjs.core.permission.RequestPermissionCallbacks;
+import com.stardust.atjs.execution.ScriptExecution;
 import com.stardust.pio.PFiles;
 
 import org.androidannotations.annotations.AfterViews;

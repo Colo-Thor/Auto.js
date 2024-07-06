@@ -2,9 +2,9 @@ package com.tony.autojs.tool.encrypt;
 
 import android.app.Activity;
 
-import com.stardust.autojs.execution.ExecutionConfig;
-import com.stardust.autojs.execution.ScriptExecution;
-import com.stardust.autojs.runtime.api.Engines;
+import com.stardust.atjs.execution.ExecutionConfig;
+import com.stardust.atjs.execution.ScriptExecution;
+import com.stardust.atjs.runtime.api.Engines;
 
 import java.lang.reflect.Method;
 

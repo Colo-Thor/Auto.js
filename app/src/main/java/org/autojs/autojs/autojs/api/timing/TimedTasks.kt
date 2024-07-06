@@ -1,6 +1,6 @@
 package org.autojs.autojs.autojs.api.timing
 
-import com.stardust.autojs.execution.ExecutionConfig
+import com.stardust.atjs.execution.ExecutionConfig
 import org.autojs.autojs.timing.TimedTask
 import org.autojs.autojs.timing.TimedTaskManager
 import org.joda.time.LocalDateTime

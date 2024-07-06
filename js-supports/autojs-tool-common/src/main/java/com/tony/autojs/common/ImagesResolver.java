@@ -2,9 +2,9 @@ package com.tony.autojs.common;
 
 import android.content.res.Configuration;
 
-import com.stardust.autojs.core.image.capture.ScreenCapturer;
-import com.stardust.autojs.runtime.ScriptRuntime;
-import com.stardust.autojs.runtime.api.Images;
+import com.stardust.atjs.core.image.capture.ScreenCapturer;
+import com.stardust.atjs.runtime.ScriptRuntime;
+import com.stardust.atjs.runtime.api.Images;
 
 import java.lang.reflect.Field;
 

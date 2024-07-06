@@ -9,8 +9,8 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.stardust.autojs.project.ProjectConfig;
-import com.stardust.autojs.project.ProjectLauncher;
+import com.stardust.atjs.project.ProjectConfig;
+import com.stardust.atjs.project.ProjectLauncher;
 import com.stardust.pio.PFile;
 
 import org.autojs.autojs.R;

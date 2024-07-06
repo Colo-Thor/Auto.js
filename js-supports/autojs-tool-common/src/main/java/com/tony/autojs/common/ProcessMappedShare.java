@@ -3,7 +3,7 @@ package com.tony.autojs.common;
 
 import android.util.Log;
 
-import com.stardust.autojs.runtime.ScriptRuntime;
+import com.stardust.atjs.runtime.ScriptRuntime;
 import com.tony.file.HuaQTomi;
 
 import java.io.ByteArrayOutputStream;

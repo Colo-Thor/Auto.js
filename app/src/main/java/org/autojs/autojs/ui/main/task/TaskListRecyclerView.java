@@ -17,11 +17,11 @@ import android.widget.TextView;
 import com.bignerdranch.expandablerecyclerview.ChildViewHolder;
 import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
-import com.stardust.autojs.execution.ScriptExecution;
-import com.stardust.autojs.execution.ScriptExecutionListener;
-import com.stardust.autojs.execution.SimpleScriptExecutionListener;
-import com.stardust.autojs.script.AutoFileSource;
-import com.stardust.autojs.workground.WrapContentLinearLayoutManager;
+import com.stardust.atjs.execution.ScriptExecution;
+import com.stardust.atjs.execution.ScriptExecutionListener;
+import com.stardust.atjs.execution.SimpleScriptExecutionListener;
+import com.stardust.atjs.script.AutoFileSource;
+import com.stardust.atjs.workground.WrapContentLinearLayoutManager;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import org.autojs.autojs.R;

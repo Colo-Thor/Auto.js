@@ -7,33 +7,10 @@ apply plugin: 'com.jakewharton.butterknife'
 
 def AAVersion = '4.8.0'
 def SupportLibVersion = '28.0.0'
-def homePath = System.properties['user.home']
-def storePasswd = System.getenv('autojspasswd')
-def keyPasswd = System.getenv('autojspasswd')
-def alias = System.getenv('autojsalias')
-def buglyAppId = System.getenv("bugly_app_id")
-def posthogAppId = System.getenv("posthog_app_id")
 
 def signSupport = false
 
 android {
-    signingConfigs {
-        if (file(homePath + '/auto-js-t-pkcs12.jks').exists()) {
-            signSupport = true
-            release {
-                storeFile file(homePath + '/auto-js-t-pkcs12.jks')
-                storePassword storePasswd
-                keyPassword keyPasswd
-                keyAlias = alias
-            }
-        }
-        debug {
-            storeFile file('debug/autojs-pkcs12-debug.jks')
-            storePassword 'fixture'
-            keyPassword 'fixture'
-            keyAlias = 'autojs-debug'
-        }
-    }
     compileSdkVersion versions.compile
     buildToolsVersion versions.buildTool
     defaultConfig {
@@ -42,8 +19,6 @@ android {
         targetSdkVersion versions.target
         versionCode versions.appVersionCode
         versionName versions.appVersionName
-        buildConfigField "String", "BUGLY_APP_ID", "\"${buglyAppId ?: ''}\""
-        buildConfigField "String", "POSTHOG_APP_ID", "\"${posthogAppId ?: ''}\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         javaCompileOptions {
@@ -60,21 +35,12 @@ android {
             shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
-            applicationIdSuffix ".debug"
         }
         release {
 //            debuggable true
             shrinkResources false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationIdSuffix ".modify"
-        }
-        if (signSupport) {
-            println('sign support')
-            release.signingConfig = signingConfigs.release
-        } else {
-            println('sign is not support')
         }
     }
     compileOptions {

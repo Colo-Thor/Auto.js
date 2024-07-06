@@ -15,7 +15,9 @@ import android.provider.Settings;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +34,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
-import com.stardust.autojs.execution.ExecutionConfig;
+import com.stardust.atjs.execution.ExecutionConfig;
 import com.stardust.util.BiMap;
 import com.stardust.util.BiMaps;
 import com.stardust.util.MapBuilder;
@@ -70,7 +72,7 @@ public class TimedTaskSettingActivity extends BaseActivity {
     public static final String EXTRA_INTENT_TASK_ID = "intent_task_id";
     public static final String EXTRA_TASK_ID = TaskReceiver.EXTRA_TASK_ID;
 
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormat.forPattern("HH:mm");
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormat.forPattern("HH:mm:ss");
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormat.forPattern("yy-MM-dd");
     private static final int REQUEST_CODE_IGNORE_BATTERY = 27101;
 
@@ -142,6 +144,9 @@ public class TimedTaskSettingActivity extends BaseActivity {
 
     @ViewById(R.id.disposable_task_time)
     TextView mDisposableTaskTime;
+
+    @ViewById(R.id.et_second)
+    EditText etSecond;
 
     @ViewById(R.id.disposable_task_date)
     TextView mDisposableTaskDate;
@@ -216,7 +221,37 @@ public class TimedTaskSettingActivity extends BaseActivity {
 
     private void setUpTaskSettings() {
         mDisposableTaskDate.setText(DATE_FORMATTER.print(LocalDate.now()));
-        mDisposableTaskTime.setText(TIME_FORMATTER.print(LocalTime.now()));
+        mDisposableTaskTime.setText(TIME_FORMATTER.print(LocalTime.now()).substring(0, 6) + "00");
+        etSecond.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String second = "00";
+                String text = etSecond.getText().toString().trim();
+                if (!text.isEmpty()) {
+                    try {
+                        int value = Integer.valueOf(text);
+                        if (value >= 0 && value < 10) {
+                            second = "0" + value;
+                        } else if (value <= 59) {
+                            second = value + "";
+                        }
+
+                    } catch (Exception e) {
+
+                    }
+                }
+                LocalTime result = TIME_FORMATTER.parseLocalTime(mDisposableTaskTime.getText().toString().substring(0, 6) + second);
+                mDisposableTaskTime.setText(TIME_FORMATTER.print(result));
+            }
+        });
         if (mTimedTask != null) {
             setupTime();
             return;
@@ -335,7 +370,7 @@ public class TimedTaskSettingActivity extends BaseActivity {
         LocalTime time = TIME_FORMATTER.parseLocalTime(mDisposableTaskTime.getText().toString());
         LocalDate date = DATE_FORMATTER.parseLocalDate(mDisposableTaskDate.getText().toString());
         LocalDateTime dateTime = new LocalDateTime(date.getYear(), date.getMonthOfYear(), date.getDayOfMonth(),
-                time.getHourOfDay(), time.getMinuteOfHour());
+                time.getHourOfDay(), time.getMinuteOfHour(), time.getSecondOfMinute(), 0);
         if (dateTime.isBefore(LocalDateTime.now())) {
             Toast.makeText(this, R.string.text_disposable_task_time_before_now, Toast.LENGTH_SHORT).show();
             return null;

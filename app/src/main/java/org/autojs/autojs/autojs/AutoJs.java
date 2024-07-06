@@ -12,12 +12,12 @@ import android.util.Log;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.core.console.GlobalConsole;
-import com.stardust.autojs.runtime.ScriptRuntime;
-import com.stardust.autojs.runtime.accessibility.AccessibilityConfig;
-import com.stardust.autojs.runtime.api.AppUtils;
-import com.stardust.autojs.runtime.exception.ScriptException;
-import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
+import com.stardust.atjs.core.console.GlobalConsole;
+import com.stardust.atjs.runtime.ScriptRuntime;
+import com.stardust.atjs.runtime.accessibility.AccessibilityConfig;
+import com.stardust.atjs.runtime.api.AppUtils;
+import com.stardust.atjs.runtime.exception.ScriptException;
+import com.stardust.atjs.runtime.exception.ScriptInterruptedException;
 
 import org.autojs.autojs.BuildConfig;
 import org.autojs.autojs.Pref;
@@ -42,7 +42,7 @@ import org.autojs.autojs.tool.AccessibilityServiceTool;
  * Created by Stardust on 2017/4/2.
  */
 
-public class AutoJs extends com.stardust.autojs.AutoJs {
+public class AutoJs extends com.stardust.atjs.AutoJs {
 
     private static AutoJs instance;
 

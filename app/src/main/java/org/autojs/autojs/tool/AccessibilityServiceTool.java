@@ -11,8 +11,8 @@ import org.autojs.autojs.BuildConfig;
 import org.autojs.autojs.Pref;
 import org.autojs.autojs.R;
 
-import com.stardust.autojs.core.accessibility.AccessibilityService;
-import com.stardust.autojs.core.util.ProcessShell;
+import com.stardust.atjs.core.accessibility.AbService;
+import com.stardust.atjs.core.util.ProcessShell;
 import com.stardust.view.accessibility.AccessibilityServiceUtils;
 
 import java.util.Locale;
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 public class AccessibilityServiceTool {
 
-    private static final Class<AccessibilityService> sAccessibilityServiceClass = AccessibilityService.class;
+    private static final Class<AbService> sAccessibilityServiceClass = AbService.class;
 
     public static void enableAccessibilityService() {
         boolean enabled = false;
@@ -77,13 +77,13 @@ public class AccessibilityServiceTool {
 
     public static boolean enableAccessibilityServiceByRootAndWaitFor(long timeOut) {
         if (enableAccessibilityServiceByRoot(sAccessibilityServiceClass)) {
-            return AccessibilityService.Companion.waitForEnabled(timeOut);
+            return AbService.Companion.waitForEnabled(timeOut);
         }
         return false;
     }
 
     public static void enableAccessibilityServiceByRootIfNeeded() {
-        if (AccessibilityService.Companion.getInstance() == null)
+        if (AbService.Companion.getInstance() == null)
             if (Pref.shouldEnableAccessibilityServiceByRoot()) {
                 AccessibilityServiceTool.enableAccessibilityServiceByRoot(sAccessibilityServiceClass);
             }
@@ -91,7 +91,7 @@ public class AccessibilityServiceTool {
 
     public static boolean enableAccessibilityServiceByAdbAndWaitFor(long timeout) {
         if (enableAccessibilityServiceByAdb(sAccessibilityServiceClass)) {
-            return AccessibilityService.Companion.waitForEnabled(timeout);
+            return AbService.Companion.waitForEnabled(timeout);
         }
         return false;
     }

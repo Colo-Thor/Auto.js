@@ -5,7 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TimingLogger;
 
-import com.stardust.autojs.rhino.TokenStream;
+import com.stardust.atjs.rhino.TokenStream;
 import com.stardust.pio.UncheckedIOException;
 
 import org.autojs.autojs.ui.edit.theme.Theme;

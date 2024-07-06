@@ -25,7 +25,7 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.stardust.autojs.inrt"
+        applicationId "com.stardust.atjs.inrt"
         minSdkVersion versions.mini
         targetSdkVersion versions.buildApkTarget
         versionCode versions.appVersionCode - 200

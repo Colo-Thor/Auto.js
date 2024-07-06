@@ -3,7 +3,7 @@ package com.taobao.idlefish
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.os.Build
 import android.view.WindowManager
-import com.stardust.autojs.core.pref.Pref
+import com.stardust.atjs.core.pref.Pref
 import com.stardust.enhancedfloaty.FloatyService
 import com.stardust.view.accessibility.AccessibilityService
 

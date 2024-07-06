@@ -2,7 +2,7 @@ package com.tony.file;
 
 import android.util.Log;
 
-import com.stardust.autojs.runtime.ScriptRuntime;
+import com.stardust.atjs.runtime.ScriptRuntime;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

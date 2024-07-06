@@ -11,7 +11,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.stardust.app.DialogUtils;
 import com.stardust.app.OperationDialogBuilder;
-import com.stardust.autojs.core.record.Recorder;
+import com.stardust.atjs.core.record.Recorder;
 import com.stardust.enhancedfloaty.FloatyService;
 import com.stardust.enhancedfloaty.FloatyWindow;
 

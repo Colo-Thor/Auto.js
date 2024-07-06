@@ -31,7 +31,7 @@
 -keep class org.mozilla.javascript.** { *; }
 -keep class com.jecelyin.editor.** { *; }
 -keep class com.stardust.automator.** { *; }
--keep class com.stardust.autojs.** { *; }
+-keep class com.stardust.atjs.** { *; }
 -keep class org.greenrobot.eventbus.** { *; }
 -keep class * extends c
 -keepattributes *Annotation*
@@ -50,7 +50,7 @@
 -keep class com.some.package.server.JsonDeserializerWithOptions
 # autojs
 -keepclassmembers class ** {
-    @com.stardust.autojs.runtime.ScriptInterface <methods>;
+    @com.stardust.atjs.runtime.ScriptInterface <methods>;
 }
 # 920 editor
 -keep class org.msgpack.** { *; }

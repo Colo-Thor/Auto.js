@@ -4,8 +4,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.core.inputevent.InputEventObserver;
-import com.stardust.autojs.core.inputevent.ShellKeyObserver;
+import com.stardust.atjs.core.inputevent.InputEventObserver;
+import com.stardust.atjs.core.inputevent.ShellKeyObserver;
 import com.stardust.event.EventDispatcher;
 import org.autojs.autojs.Pref;
 import org.autojs.autojs.autojs.AutoJs;

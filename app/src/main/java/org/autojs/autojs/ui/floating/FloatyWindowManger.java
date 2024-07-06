@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.util.FloatingPermission;
+import com.stardust.atjs.util.FloatingPermission;
 import com.stardust.enhancedfloaty.FloatyService;
 import com.stardust.enhancedfloaty.FloatyWindow;
 
@@ -15,7 +15,7 @@ import org.autojs.autojs.R;
 
 import java.lang.ref.WeakReference;
 
-import static com.stardust.autojs.util.FloatingPermission.manageDrawOverlays;
+import static com.stardust.atjs.util.FloatingPermission.manageDrawOverlays;
 
 /**
  * Created by Stardust on 2017/9/30.

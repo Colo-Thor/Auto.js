@@ -3,7 +3,7 @@ package org.mozilla.javascript;
 import android.os.Looper;
 import android.util.Log;
 
-import com.stardust.autojs.engine.RhinoJavaScriptEngine;
+import com.stardust.atjs.engine.RhinoJavaScriptEngine;
 
 import org.mozilla.javascript.jdk18.VMBridge_jdk18;
 
@@ -56,7 +56,7 @@ public class VMBridge_custom extends VMBridge_jdk18 {
                     e.printStackTrace();
                     // notify the script thread to exit
                     if (engine != null) {
-                        com.stardust.autojs.runtime.ScriptRuntime runtime = engine.getRuntime();
+                        com.stardust.atjs.runtime.ScriptRuntime runtime = engine.getRuntime();
                         Log.d(LOG_TAG, "runtime = " + runtime);
                         runtime.exit(e);
                     }

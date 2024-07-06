@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
-import com.stardust.autojs.execution.ExecutionConfig;
+import com.stardust.atjs.execution.ExecutionConfig;
 
 import org.autojs.autojs.BuildConfig;
 import org.autojs.autojs.external.ScriptIntents;

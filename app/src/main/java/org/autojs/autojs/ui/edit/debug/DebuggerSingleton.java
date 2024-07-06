@@ -1,6 +1,6 @@
 package org.autojs.autojs.ui.edit.debug;
 
-import com.stardust.autojs.rhino.debug.Debugger;
+import com.stardust.atjs.rhino.debug.Debugger;
 
 import org.autojs.autojs.autojs.AutoJs;
 import org.mozilla.javascript.ContextFactory;

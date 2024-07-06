@@ -2,7 +2,7 @@ package com.tony;
 
 import android.util.Log;
 
-import com.stardust.autojs.core.image.ImageWrapper;
+import com.stardust.atjs.core.image.ImageWrapper;
 
 import java.util.ArrayList;
 import java.util.Date;

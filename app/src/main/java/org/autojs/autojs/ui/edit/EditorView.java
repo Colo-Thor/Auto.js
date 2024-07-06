@@ -30,9 +30,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.stardust.autojs.engine.JavaScriptEngine;
-import com.stardust.autojs.engine.ScriptEngine;
-import com.stardust.autojs.execution.ScriptExecution;
+import com.stardust.atjs.engine.JavaScriptEngine;
+import com.stardust.atjs.engine.ScriptEngine;
+import com.stardust.atjs.execution.ScriptExecution;
 import com.stardust.pio.PFiles;
 import com.stardust.util.BackPressedHandler;
 import com.stardust.util.Callback;

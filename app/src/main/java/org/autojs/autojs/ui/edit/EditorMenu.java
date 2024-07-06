@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.stardust.autojs.script.JavaScriptSource;
+import com.stardust.atjs.script.JavaScriptSource;
 import com.stardust.pio.PFiles;
 
 import org.autojs.autojs.R;

@@ -1,10 +1,10 @@
 package org.autojs.autojs.ui.main.task;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.engine.ScriptEngine;
-import com.stardust.autojs.execution.ScriptExecution;
-import com.stardust.autojs.script.AutoFileSource;
-import com.stardust.autojs.script.JavaScriptSource;
+import com.stardust.atjs.engine.ScriptEngine;
+import com.stardust.atjs.execution.ScriptExecution;
+import com.stardust.atjs.script.AutoFileSource;
+import com.stardust.atjs.script.JavaScriptSource;
 import com.stardust.pio.PFiles;
 
 import org.autojs.autojs.R;
@@ -69,7 +69,7 @@ public abstract class Task {
             if (mTimedTask != null) {
                 long nextTime = mTimedTask.getNextTime();
                 return GlobalAppContext.getString(R.string.text_next_run_time) + ": " +
-                        DateTimeFormat.forPattern("yyyy/MM/dd HH:mm").print(nextTime);
+                        DateTimeFormat.forPattern("yyyy/MM/dd HH:mm:ss").print(nextTime);
             } else {
                 assert mIntentTask != null;
                 Integer desc = ACTION_DESC_MAP.get(mIntentTask.getAction());

@@ -8,7 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.execution.ExecutionConfig;
+import com.stardust.atjs.execution.ExecutionConfig;
 
 import org.autojs.autojs.autojs.AutoJs;
 import org.autojs.autojs.model.script.ScriptFile;

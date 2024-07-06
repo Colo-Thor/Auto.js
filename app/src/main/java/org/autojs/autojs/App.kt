@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -13,25 +12,16 @@ import androidx.multidex.MultiDexApplication
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.posthog.android.PostHogAndroid
-import com.posthog.android.PostHogAndroidConfig
-
 import com.stardust.app.GlobalAppContext
-import com.stardust.autojs.core.ui.inflater.ImageLoader
-import com.stardust.autojs.core.ui.inflater.util.Drawables
-import com.stardust.autojs.runtime.api.Device
+import com.stardust.atjs.core.ui.inflater.ImageLoader
+import com.stardust.atjs.core.ui.inflater.util.Drawables
 import com.stardust.theme.ThemeColor
-import com.tencent.bugly.Bugly
-import com.tencent.bugly.crashreport.CrashReport
-import org.apache.commons.lang3.StringUtils
 import org.autojs.autojs.autojs.AutoJs
 import org.autojs.autojs.autojs.key.GlobalKeyObserver
 import org.autojs.autojs.external.receiver.DynamicBroadcastReceivers
 import org.autojs.autojs.theme.ThemeColorManagerCompat
 import org.autojs.autojs.timing.TimedTaskManager
 import org.autojs.autojs.timing.TimedTaskScheduler
-import org.autojs.autojs.tool.CrashHandler
-import org.autojs.autojs.ui.error.ErrorReportActivity
 import java.lang.ref.WeakReference
 import java.util.*
 
@@ -47,44 +37,7 @@ class App : MultiDexApplication() {
         super.onCreate()
         GlobalAppContext.set(this)
         instance = WeakReference(this)
-        setUpStaticsTool()
-        setUpDebugEnvironment()
         init()
-    }
-
-    private fun setUpStaticsTool() {
-        if (BuildConfig.DEBUG || StringUtils.isEmpty(BuildConfig.POSTHOG_APP_ID))
-            return
-        // Create a PostHog Config with the given API key and host
-        val config = PostHogAndroidConfig(
-            apiKey = BuildConfig.POSTHOG_APP_ID,
-            host = "https://app.posthog.com"
-        )
-
-        // Setup PostHog with the given Context and Config
-        PostHogAndroid.setup(this, config)
-    }
-
-    @SuppressLint("HardwareIds")
-    private fun setUpDebugEnvironment() {
-        if (StringUtils.isEmpty(BuildConfig.BUGLY_APP_ID)) {
-            return
-        }
-        Bugly.isDev = BuildConfig.DEBUG
-        val crashHandler = CrashHandler(ErrorReportActivity::class.java)
-
-        val strategy = CrashReport.UserStrategy(applicationContext)
-        strategy.setCrashHandleCallback(crashHandler)
-        strategy.deviceModel = Device.model
-        strategy.deviceID =
-            Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
-        CrashReport.setIsDevelopmentDevice(this, BuildConfig.DEBUG)
-
-        CrashReport.initCrashReport(applicationContext, BuildConfig.BUGLY_APP_ID, false, strategy)
-
-        crashHandler.setBuglyHandler(Thread.getDefaultUncaughtExceptionHandler())
-        Thread.setDefaultUncaughtExceptionHandler(crashHandler)
-
     }
 
     private fun init() {

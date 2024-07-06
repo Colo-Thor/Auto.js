@@ -5,8 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Base64;
 
-import com.stardust.autojs.execution.ExecutionConfig;
-import com.stardust.autojs.runtime.api.Engines;
+import com.stardust.atjs.execution.ExecutionConfig;
+import com.stardust.atjs.runtime.api.Engines;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;

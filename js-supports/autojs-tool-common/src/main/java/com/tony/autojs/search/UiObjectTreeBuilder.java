@@ -3,8 +3,8 @@ package com.tony.autojs.search;
 import android.util.Log;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-import com.stardust.autojs.BuildConfig;
-import com.stardust.autojs.core.accessibility.AccessibilityBridge;
+import com.stardust.atjs.BuildConfig;
+import com.stardust.atjs.core.accessibility.AccessibilityBridge;
 import com.stardust.automator.UiObject;
 import com.stardust.automator.filter.Filter;
 

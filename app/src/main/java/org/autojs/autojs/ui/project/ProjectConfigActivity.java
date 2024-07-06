@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputLayout;
-import com.stardust.autojs.project.ProjectConfig;
+import com.stardust.atjs.project.ProjectConfig;
 import com.stardust.pio.PFiles;
 
 import org.androidannotations.annotations.AfterViews;

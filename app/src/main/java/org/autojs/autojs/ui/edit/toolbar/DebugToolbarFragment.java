@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.stardust.autojs.execution.ScriptExecution;
-import com.stardust.autojs.rhino.debug.DebugCallback;
-import com.stardust.autojs.rhino.debug.Debugger;
-import com.stardust.autojs.rhino.debug.Dim;
-import com.stardust.autojs.runtime.exception.ScriptInterruptedException;
+import com.stardust.atjs.execution.ScriptExecution;
+import com.stardust.atjs.rhino.debug.DebugCallback;
+import com.stardust.atjs.rhino.debug.Debugger;
+import com.stardust.atjs.rhino.debug.Dim;
+import com.stardust.atjs.runtime.exception.ScriptInterruptedException;
 import com.stardust.pio.PFiles;
 
 import org.androidannotations.annotations.Click;

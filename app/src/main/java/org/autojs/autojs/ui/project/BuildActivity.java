@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.textfield.TextInputLayout;
-import com.stardust.autojs.project.ProjectConfig;
+import com.stardust.atjs.project.ProjectConfig;
 import com.stardust.util.IntentUtil;
 
 import org.androidannotations.annotations.AfterViews;

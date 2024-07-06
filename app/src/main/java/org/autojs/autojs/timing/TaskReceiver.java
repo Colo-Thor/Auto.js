@@ -17,7 +17,7 @@ import java.util.WeakHashMap;
 
 public class TaskReceiver extends BroadcastReceiver {
 
-    public static final String ACTION_TASK = "org.autojs.autojs.action.task";
+    public static final String ACTION_TASK = "com.stardust.atjs.action.task";
     public static final String EXTRA_TASK_ID = "task_id";
     private static final String LOG_TAG = "TaskReceiver";
 

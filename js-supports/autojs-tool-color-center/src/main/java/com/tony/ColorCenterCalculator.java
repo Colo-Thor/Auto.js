@@ -1,10 +1,10 @@
 package com.tony;
 
-import com.stardust.autojs.core.image.ColorFinder;
-import com.stardust.autojs.core.image.ImageWrapper;
-import com.stardust.autojs.core.opencv.Mat;
-import com.stardust.autojs.runtime.ScriptRuntime;
-import com.stardust.autojs.runtime.api.Images;
+import com.stardust.atjs.core.image.ColorFinder;
+import com.stardust.atjs.core.image.ImageWrapper;
+import com.stardust.atjs.core.opencv.Mat;
+import com.stardust.atjs.runtime.ScriptRuntime;
+import com.stardust.atjs.runtime.api.Images;
 
 import org.opencv.core.Core;
 import org.opencv.core.Rect;

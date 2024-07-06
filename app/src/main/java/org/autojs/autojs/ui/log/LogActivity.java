@@ -4,8 +4,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.view.View;
 
-import com.stardust.autojs.core.console.ConsoleView;
-import com.stardust.autojs.core.console.ConsoleImpl;
+import com.stardust.atjs.core.console.ConsoleView;
+import com.stardust.atjs.core.console.ConsoleImpl;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;

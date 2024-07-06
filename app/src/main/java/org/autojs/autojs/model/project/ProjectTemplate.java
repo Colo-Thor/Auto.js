@@ -2,7 +2,7 @@ package org.autojs.autojs.model.project;
 
 import android.annotation.SuppressLint;
 
-import com.stardust.autojs.project.ProjectConfig;
+import com.stardust.atjs.project.ProjectConfig;
 import com.stardust.pio.PFiles;
 
 import java.io.File;

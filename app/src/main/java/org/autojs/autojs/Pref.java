@@ -7,7 +7,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.runtime.accessibility.AccessibilityConfig;
+import com.stardust.atjs.runtime.accessibility.AccessibilityConfig;
 
 import org.autojs.autojs.autojs.key.GlobalKeyObserver;
 import org.autojs.autojs.timing.work.WorkProviderConstants;

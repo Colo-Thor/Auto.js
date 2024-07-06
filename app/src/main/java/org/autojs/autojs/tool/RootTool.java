@@ -1,6 +1,6 @@
 package org.autojs.autojs.tool;
 
-import com.stardust.autojs.core.util.ProcessShell;
+import com.stardust.atjs.core.util.ProcessShell;
 import com.stericson.RootShell.RootShell;
 
 /**

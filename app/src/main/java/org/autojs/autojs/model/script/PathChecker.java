@@ -28,9 +28,9 @@ public class PathChecker {
 
     public static int check(final String path) {
         if (TextUtils.isEmpty(path))
-            return com.stardust.autojs.R.string.text_path_is_empty;
+            return com.stardust.atjs.R.string.text_path_is_empty;
         if (!new File(path).exists())
-            return com.stardust.autojs.R.string.text_file_not_exists;
+            return com.stardust.atjs.R.string.text_file_not_exists;
         return CHECK_RESULT_OK;
     }
 
@@ -45,7 +45,7 @@ public class PathChecker {
 
     private int checkWithStoragePermission(String path) {
         if (mContext instanceof Activity && !hasStorageReadPermission((Activity) mContext)) {
-            return com.stardust.autojs.R.string.text_no_file_rw_permission;
+            return com.stardust.atjs.R.string.text_no_file_rw_permission;
         }
         return check(path);
     }

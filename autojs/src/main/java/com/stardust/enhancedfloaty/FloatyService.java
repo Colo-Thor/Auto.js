@@ -9,7 +9,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
-import com.stardust.autojs.core.floaty.RawWindow;
+import com.stardust.atjs.core.floaty.RawWindow;
 import com.taobao.idlefish.AccessibilityService;
 
 import java.util.concurrent.CopyOnWriteArraySet;

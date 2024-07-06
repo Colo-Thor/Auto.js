@@ -1,8 +1,8 @@
 package org.autojs.autojs.autojs;
 
 import com.stardust.app.GlobalAppContext;
-import com.stardust.autojs.execution.ScriptExecution;
-import com.stardust.autojs.execution.ScriptExecutionListener;
+import com.stardust.atjs.execution.ScriptExecution;
+import com.stardust.atjs.execution.ScriptExecutionListener;
 
 import org.autojs.autojs.R;
 

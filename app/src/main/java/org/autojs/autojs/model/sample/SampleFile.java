@@ -4,8 +4,8 @@ import android.content.res.AssetManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.stardust.autojs.script.JavaScriptSource;
-import com.stardust.autojs.script.ScriptSource;
+import com.stardust.atjs.script.JavaScriptSource;
+import com.stardust.atjs.script.ScriptSource;
 import com.stardust.pio.PFiles;
 import com.stardust.pio.UncheckedIOException;
 import org.autojs.autojs.model.script.ScriptFile;

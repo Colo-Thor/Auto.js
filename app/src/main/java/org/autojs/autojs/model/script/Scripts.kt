@@ -7,11 +7,11 @@ import androidx.annotation.Nullable
 import android.widget.Toast
 
 import com.stardust.app.GlobalAppContext
-import com.stardust.autojs.execution.ExecutionConfig
-import com.stardust.autojs.execution.ScriptExecution
-import com.stardust.autojs.execution.SimpleScriptExecutionListener
-import com.stardust.autojs.runtime.exception.ScriptInterruptedException
-import com.stardust.autojs.script.ScriptSource
+import com.stardust.atjs.execution.ExecutionConfig
+import com.stardust.atjs.execution.ScriptExecution
+import com.stardust.atjs.execution.SimpleScriptExecutionListener
+import com.stardust.atjs.runtime.exception.ScriptInterruptedException
+import com.stardust.atjs.script.ScriptSource
 import com.stardust.util.IntentUtil
 
 import org.autojs.autojs.Pref

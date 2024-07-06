@@ -3,7 +3,7 @@ package org.autojs.autojs.model.explorer;
 import android.content.Context;
 import android.content.res.AssetManager;
 
-import com.stardust.autojs.project.ProjectConfig;
+import com.stardust.atjs.project.ProjectConfig;
 import com.stardust.pio.PFile;
 import com.stardust.pio.PFiles;
 

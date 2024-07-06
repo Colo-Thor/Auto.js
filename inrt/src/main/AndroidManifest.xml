@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.stardust.autojs.inrt">
+          package="com.stardust.atjs.inrt">
 
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -32,7 +32,7 @@
 
 
     <application
-        android:name="com.stardust.autojs.inrt.App"
+        android:name="com.stardust.atjs.inrt.App"
         android:allowBackup="false"
         android:icon="@drawable/inrt_launcher"
         android:label="inrt"
@@ -43,12 +43,12 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:label, android:allowBackup"
         tools:targetApi="m">
-        <activity android:name="com.stardust.autojs.inrt.LogActivity" android:exported="false">
+        <activity android:name="com.stardust.atjs.inrt.LogActivity" android:exported="false">
 
         </activity>
 
         <activity
-            android:name="com.stardust.autojs.inrt.SplashActivity"
+            android:name="com.stardust.atjs.inrt.SplashActivity"
             android:theme="@style/AppTheme.Splash"
             android:exported="true">
             <intent-filter>
@@ -58,7 +58,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.stardust.autojs.inrt.SettingsActivity" android:exported="false"/>
+        <activity android:name="com.stardust.atjs.inrt.SettingsActivity" android:exported="false"/>
 
         <service
             android:name="com.stardust.notification.NotificationListenerService"

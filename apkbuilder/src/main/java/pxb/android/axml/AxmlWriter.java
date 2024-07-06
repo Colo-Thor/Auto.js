@@ -17,7 +17,7 @@ package pxb.android.axml;
 
 import android.util.Log;
 
-import com.stardust.autojs.apkbuilder.MutableAxmlWriter;
+import com.stardust.atjs.apkbuilder.MutableAxmlWriter;
 
 import pxb.android.StringItem;
 import pxb.android.StringItems;

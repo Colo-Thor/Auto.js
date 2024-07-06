@@ -7,7 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.widget.Toast;
 
-import com.stardust.autojs.script.StringScriptSource;
+import com.stardust.atjs.script.StringScriptSource;
 import com.stardust.pio.PFiles;
 import org.autojs.autojs.external.ScriptIntents;
 import org.autojs.autojs.R;

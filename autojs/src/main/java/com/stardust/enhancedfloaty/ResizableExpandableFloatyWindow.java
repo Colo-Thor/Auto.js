@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.stardust.autojs.R;
+import com.stardust.atjs.R;
 import com.stardust.enhancedfloaty.gesture.DragGesture;
 import com.stardust.enhancedfloaty.gesture.ResizeGesture;
 import com.stardust.enhancedfloaty.util.WindowTypeCompat;

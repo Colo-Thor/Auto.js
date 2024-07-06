@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.stardust.autojs.script.JsBeautifier;
+import com.stardust.atjs.script.JsBeautifier;
 
 import org.autojs.autojs.R;
 import org.autojs.autojs.ui.edit.theme.Theme;
