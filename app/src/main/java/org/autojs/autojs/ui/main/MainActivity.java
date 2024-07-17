@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Process;
 import android.provider.Settings;
 import android.view.Gravity;
 import android.view.Menu;
@@ -29,6 +30,7 @@ import com.stardust.pio.PFiles;
 import com.stardust.theme.ThemeColorManager;
 import com.stardust.util.BackPressedHandler;
 import com.stardust.util.DrawerAutoClose;
+import com.stardust.view.accessibility.AccessibilityService;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -249,11 +251,21 @@ public class MainActivity extends BaseActivity implements OnActivityResultDelega
 
     @Click(R.id.exit)
     public void exitCompletely() {
-        finish();
+        // 停止无障碍服务
+        if (AccessibilityServiceTool.isAccessibilityServiceEnabled(this)){
+            AccessibilityService.Companion.disable();
+        }
         FloatyWindowManger.hideCircularMenu();
         ForegroundService.stop(this);
         stopService(new Intent(this, FloatyService.class));
         AutoJs.getInstance().getScriptEngineService().stopAll();
+        finish();
+        try {
+            Process.killProcess(Process.myPid());
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
