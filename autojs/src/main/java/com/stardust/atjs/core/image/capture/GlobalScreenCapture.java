@@ -131,6 +131,7 @@ public class GlobalScreenCapture {
         if (!hasPermission) {
             return false;
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !foregroundServiceStarted) {
+            Log.w(TAG, "hasPermission\n" + Log.getStackTraceString(new Throwable()));
             // 前台服务可能丢失，重新获取
             mContext.startForegroundService(new Intent(mContext, CaptureForegroundService.class));
             awaitForegroundServiceIfNeeded();

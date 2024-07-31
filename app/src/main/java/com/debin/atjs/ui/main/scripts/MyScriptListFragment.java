@@ -1,0 +1,203 @@
+package com.debin.atjs.ui.main.scripts;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+
+import com.debin.atjs.model.script.ScriptFile;
+import com.debin.atjs.model.script.Scripts;
+import com.debin.atjs.theme.dialog.ThemeColorMaterialDialogBuilder;
+import com.debin.atjs.tool.SimpleObserver;
+import com.debin.atjs.ui.common.ScriptOperations;
+import com.debin.atjs.ui.edit.EditorView;
+import com.debin.atjs.ui.main.FloatingActionMenu;
+import com.debin.atjs.ui.main.QueryEvent;
+import com.debin.atjs.ui.main.ViewPagerFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import com.stardust.app.GlobalAppContext;
+import com.stardust.util.IntentUtil;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+import com.debin.atjs.Pref;
+import com.debin.atjs.R;
+import com.debin.atjs.external.fileprovider.AppFileProvider;
+import com.debin.atjs.model.explorer.ExplorerDirPage;
+import com.debin.atjs.model.explorer.Explorers;
+import com.debin.atjs.ui.explorer.ExplorerView;
+import com.debin.atjs.ui.project.ProjectConfigActivity;
+import com.debin.atjs.ui.project.ProjectConfigActivity_;
+import com.debin.atjs.ui.viewmodel.ExplorerItemList;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
+/**
+ * Created by Stardust on 2017/3/13.
+ */
+@EFragment(R.layout.fragment_my_script_list)
+public class MyScriptListFragment extends ViewPagerFragment implements FloatingActionMenu.OnFloatingActionButtonClickListener {
+
+    private static final String TAG = "MyScriptListFragment";
+
+    public MyScriptListFragment() {
+        super(0);
+    }
+
+    @ViewById(R.id.script_file_list)
+    ExplorerView mExplorerView;
+
+    private FloatingActionMenu mFloatingActionMenu;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @AfterViews
+    void setUpViews() {
+        ExplorerItemList.SortConfig sortConfig = ExplorerItemList.SortConfig.from(PreferenceManager.getDefaultSharedPreferences(getContext()));
+        mExplorerView.setSortConfig(sortConfig);
+        mExplorerView.setExplorer(Explorers.workspace(), ExplorerDirPage.createRoot(Pref.getScriptDirPath()));
+        mExplorerView.setOnItemClickListener((view, item) -> {
+            if (item.isEditable()) {
+                ScriptFile scriptFile = item.toScriptFile();
+                Log.d(TAG, "setUpViews: selected file size: " + scriptFile.length());
+                if (scriptFile.length() > EditorView.MAX_EDITABLE_SIZE) {
+                    new ThemeColorMaterialDialogBuilder(getContext())
+                            .title(getString(R.string.text_cannot_read_file))
+                            .content("当前文件过大，直接编辑可能导致卡死")
+                            .positiveText(R.string.text_cancel)
+                            .negativeText("使用其他方式打开")
+                            .cancelable(false)
+                            .onPositive((dialog, which) -> {})
+                            .onNegative(((dialog, which) -> {
+                                IntentUtil.viewFile(GlobalAppContext.get(), item.getPath(), AppFileProvider.AUTHORITY);
+                            }))
+                            .show();
+                    return;
+                }
+                Scripts.INSTANCE.edit(getActivity(), item.toScriptFile());
+            } else {
+                IntentUtil.viewFile(GlobalAppContext.get(), item.getPath(), AppFileProvider.AUTHORITY);
+            }
+        });
+    }
+
+    @Override
+    protected void onFabClick(FloatingActionButton fab) {
+        initFloatingActionMenuIfNeeded(fab);
+        if (mFloatingActionMenu.isExpanded()) {
+            mFloatingActionMenu.collapse();
+        } else {
+            mFloatingActionMenu.expand();
+
+        }
+    }
+
+    private void initFloatingActionMenuIfNeeded(final FloatingActionButton fab) {
+        if (mFloatingActionMenu != null)
+            return;
+        mFloatingActionMenu = getActivity().findViewById(R.id.floating_action_menu);
+        mFloatingActionMenu.getState()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SimpleObserver<Boolean>() {
+                    @Override
+                    public void onNext(@io.reactivex.annotations.NonNull Boolean expanding) {
+                        fab.animate()
+                                .rotation(expanding ? 45 : 0)
+                                .setDuration(300)
+                                .start();
+                    }
+                });
+        mFloatingActionMenu.setOnFloatingActionButtonClickListener(this);
+    }
+
+    @Override
+    public boolean onBackPressed(Activity activity) {
+        if (mFloatingActionMenu != null && mFloatingActionMenu.isExpanded()) {
+            mFloatingActionMenu.collapse();
+            return true;
+        }
+        if (mExplorerView.canGoBack()) {
+            mExplorerView.goBack();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onPageHide() {
+        super.onPageHide();
+        if (mFloatingActionMenu != null && mFloatingActionMenu.isExpanded()) {
+            mFloatingActionMenu.collapse();
+        }
+    }
+
+    @Subscribe
+    public void onQuerySummit(QueryEvent event) {
+        if (!isShown()) {
+            return;
+        }
+        if (event == QueryEvent.CLEAR) {
+            mExplorerView.setFilter(null);
+            return;
+        }
+        String query = event.getQuery();
+        mExplorerView.setFilter((item -> item.getName().contains(query)));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mExplorerView.getSortConfig().saveInto(PreferenceManager.getDefaultSharedPreferences(getContext()));
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mFloatingActionMenu != null)
+            mFloatingActionMenu.setOnFloatingActionButtonClickListener(null);
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onClick(FloatingActionButton button, int pos) {
+        if (mExplorerView == null)
+            return;
+        switch (pos) {
+            case 0:
+                new ScriptOperations(getContext(), mExplorerView, mExplorerView.getCurrentPage())
+                        .newDirectory();
+                break;
+            case 1:
+                new ScriptOperations(getContext(), mExplorerView, mExplorerView.getCurrentPage())
+                        .newFile();
+                break;
+            case 2:
+                new ScriptOperations(getContext(), mExplorerView, mExplorerView.getCurrentPage())
+                        .importFile();
+                break;
+            case 3:
+                ProjectConfigActivity_.intent(getContext())
+                        .extra(ProjectConfigActivity.EXTRA_PARENT_DIRECTORY, mExplorerView.getCurrentPage().getPath())
+                        .extra(ProjectConfigActivity.EXTRA_NEW_PROJECT, true)
+                        .start();
+                break;
+
+        }
+    }
+}

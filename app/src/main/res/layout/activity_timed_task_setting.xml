@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/ToolBarStyle"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -53,7 +53,7 @@
                         android:layout_marginBottom="16dp"
                         android:text="@string/text_timing"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textColor="?android:textColorSecondary"/>
+                        android:textColor="?android:textColorSecondary" />
 
                     <RadioGroup
                         android:id="@+id/timing_group"
@@ -66,7 +66,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:paddingLeft="16dp"
-                            android:text="@string/text_daily_task"/>
+                            android:text="@string/text_daily_task" />
 
                         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                             android:id="@+id/daily_task_relative_layout"
@@ -76,11 +76,29 @@
                             app:ael_interpolator="fastOutSlowIn"
                             app:ael_orientation="vertical">
 
-                            <TimePicker
-                                android:id="@+id/daily_task_time_picker"
-                                android:layout_width="match_parent"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:timePickerMode="spinner"/>
+                                android:orientation="horizontal">
+
+                                <TimePicker
+                                    android:id="@+id/daily_task_time_picker"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:timePickerMode="spinner" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/daily_task_time_second_et"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="12dp"
+                                    android:digits="0123456789"
+                                    android:hint="请输入秒数"
+                                    android:maxLength="2" />
+
+                            </LinearLayout>
 
                         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
@@ -90,7 +108,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:paddingLeft="16dp"
-                            android:text="@string/text_disposable_task"/>
+                            android:text="@string/text_disposable_task" />
 
                         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                             android:layout_width="match_parent"
@@ -111,12 +129,12 @@
                                 android:paddingTop="6dp"
                                 android:paddingBottom="6dp">
 
-                                <org.autojs.autojs.theme.widget.ThemeColorImageViewCompat
+                                <com.debin.atjs.theme.widget.ThemeColorImageViewCompat
                                     android:layout_width="24dp"
                                     android:layout_height="24dp"
                                     android:layout_gravity="center_vertical"
                                     android:gravity="center"
-                                    android:src="@drawable/ic_schedule_black_48dp"/>
+                                    android:src="@drawable/ic_schedule_black_48dp" />
 
                                 <TextView
                                     android:id="@+id/disposable_task_time"
@@ -125,10 +143,10 @@
                                     android:layout_marginLeft="12dp"
                                     android:gravity="center_vertical"
                                     android:textColor="?android:textColorPrimary"
-                                    android:textSize="16sp"/>
+                                    android:textSize="16sp" />
 
                                 <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/et_second"
+                                    android:id="@+id/disposable_task_second_et"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="12dp"
@@ -148,13 +166,13 @@
                                 android:orientation="horizontal"
                                 android:paddingTop="6dp">
 
-                                <org.autojs.autojs.theme.widget.ThemeColorImageViewCompat
+                                <com.debin.atjs.theme.widget.ThemeColorImageViewCompat
                                     android:id="@+id/disposable_task_date_icon"
                                     android:layout_width="24dp"
                                     android:layout_height="24dp"
                                     android:layout_gravity="center_vertical"
                                     android:gravity="center"
-                                    android:src="@drawable/ic_date_range_black_48dp"/>
+                                    android:src="@drawable/ic_date_range_black_48dp" />
 
                                 <TextView
                                     android:id="@+id/disposable_task_date"
@@ -163,7 +181,7 @@
                                     android:layout_marginLeft="12dp"
                                     android:gravity="center_vertical"
                                     android:textColor="?android:textColorPrimary"
-                                    android:textSize="16sp"/>
+                                    android:textSize="16sp" />
                             </LinearLayout>
 
                         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
@@ -174,7 +192,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:paddingLeft="16dp"
-                            android:text="@string/text_weekly_task"/>
+                            android:text="@string/text_weekly_task" />
 
                         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                             android:layout_width="match_parent"
@@ -189,43 +207,27 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <TimePicker
-                                    android:id="@+id/weekly_task_time_picker"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:timePickerMode="spinner"/>
-
-
                                 <LinearLayout
-                                    android:layout_width="match_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
-                                    android:orientation="horizontal"
-                                    android:weightSum="4">
+                                    android:orientation="horizontal">
 
-                                    <CheckBox
-                                        android:layout_width="0dp"
+                                    <TimePicker
+                                        android:id="@+id/weekly_task_time_picker"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="@string/text_day1"/>
+                                        android:timePickerMode="spinner" />
 
-                                    <CheckBox
-                                        android:layout_width="0dp"
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/weekly_task_time_second_et"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="@string/text_day2"/>
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="12dp"
+                                        android:digits="0123456789"
+                                        android:hint="请输入秒数"
+                                        android:maxLength="2" />
 
-                                    <CheckBox
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="@string/text_day3"/>
-
-                                    <CheckBox
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="@string/text_day4"/>
                                 </LinearLayout>
 
 
@@ -240,19 +242,52 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="@string/text_day5"/>
+                                        android:text="@string/text_day1" />
 
                                     <CheckBox
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="@string/text_day6"/>
+                                        android:text="@string/text_day2" />
 
                                     <CheckBox
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="@string/text_day7"/>
+                                        android:text="@string/text_day3" />
+
+                                    <CheckBox
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/text_day4" />
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="25dp"
+                                    android:orientation="horizontal"
+                                    android:weightSum="4">
+
+                                    <CheckBox
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/text_day5" />
+
+                                    <CheckBox
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/text_day6" />
+
+                                    <CheckBox
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/text_day7" />
 
                                 </LinearLayout>
 
@@ -267,7 +302,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:paddingLeft="16dp"
-                            android:text="@string/text_run_on_broadcast"/>
+                            android:text="@string/text_run_on_broadcast" />
 
                         <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                             android:layout_width="match_parent"
@@ -294,7 +329,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_startup"/>
+                                        android:text="@string/text_run_on_startup" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_boot"
@@ -302,7 +337,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_boot"/>
+                                        android:text="@string/text_run_on_boot" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_screen_on"
@@ -310,7 +345,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_screen_on"/>
+                                        android:text="@string/text_run_on_screen_on" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_screen_off"
@@ -318,7 +353,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_screen_off"/>
+                                        android:text="@string/text_run_on_screen_off" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_screen_unlock"
@@ -326,7 +361,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_screen_unlock"/>
+                                        android:text="@string/text_run_on_screen_unlock" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_battery_change"
@@ -334,7 +369,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_battery_change"/>
+                                        android:text="@string/text_run_on_battery_change" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_power_connect"
@@ -342,7 +377,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_power_connect"/>
+                                        android:text="@string/text_run_on_power_connect" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_power_disconnect"
@@ -350,7 +385,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_power_disconnect"/>
+                                        android:text="@string/text_run_on_power_disconnect" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_conn_change"
@@ -358,7 +393,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_conn_change"/>
+                                        android:text="@string/text_run_on_conn_change" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_package_install"
@@ -366,7 +401,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_package_install"/>
+                                        android:text="@string/text_run_on_package_install" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_package_uninstall"
@@ -374,7 +409,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_package_uninstall"/>
+                                        android:text="@string/text_run_on_package_uninstall" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_package_update"
@@ -382,7 +417,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_package_update"/>
+                                        android:text="@string/text_run_on_package_update" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_headset_plug"
@@ -390,7 +425,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_headset_plug"/>
+                                        android:text="@string/text_run_on_headset_plug" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_config_change"
@@ -398,7 +433,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_config_change"/>
+                                        android:text="@string/text_run_on_config_change" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_time_tick"
@@ -406,7 +441,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_time_tick"/>
+                                        android:text="@string/text_run_on_time_tick" />
 
                                     <RadioButton
                                         android:id="@+id/run_on_other_broadcast"
@@ -414,7 +449,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="16dp"
                                         android:paddingLeft="8dp"
-                                        android:text="@string/text_run_on_other_broadcast"/>
+                                        android:text="@string/text_run_on_other_broadcast" />
 
                                 </RadioGroup>
 
@@ -431,7 +466,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:maxLines="2"
-                                        android:text="@string/text_broadcast_action_prefix"/>
+                                        android:text="@string/text_broadcast_action_prefix" />
 
                                 </com.google.android.material.textfield.TextInputLayout>
 

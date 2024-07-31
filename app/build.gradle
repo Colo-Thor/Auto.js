@@ -14,7 +14,7 @@ android {
     compileSdkVersion versions.compile
     buildToolsVersion versions.buildTool
     defaultConfig {
-        applicationId "org.autojs.autojs"
+        applicationId "com.debin.atjs"
         minSdkVersion versions.mini
         targetSdkVersion versions.target
         versionCode versions.appVersionCode
@@ -186,12 +186,6 @@ dependencies {
     implementation 'joda-time:joda-time:2.12.5'
     // Tasker Plugin
     implementation 'com.twofortyfouram:android-plugin-client-sdk-for-locale:4.0.3'
-    // PostHog
-    implementation("com.posthog:posthog-android:3.1.15")
-    // Bugly
-    implementation 'com.tencent.bugly:crashreport:4.0.4'
-    // 4.+ 合并了 不需要手动引入
-    // implementation 'com.tencent.bugly:nativecrashreport:3.9.2'
     // MaterialDialogCommon
     implementation('com.afollestad.material-dialogs:commons:0.9.6.0', {
         exclude group: 'com.android.support'
