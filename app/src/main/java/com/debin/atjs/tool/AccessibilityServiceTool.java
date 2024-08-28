@@ -6,11 +6,9 @@ import android.provider.Settings;
 import android.text.TextUtils;
 
 import com.debin.atjs.BuildConfig;
-import com.stardust.app.GlobalAppContext;
-
 import com.debin.atjs.Pref;
 import com.debin.atjs.R;
-
+import com.stardust.app.GlobalAppContext;
 import com.stardust.atjs.core.accessibility.AbService;
 import com.stardust.atjs.core.util.ProcessShell;
 import com.stardust.view.accessibility.AccessibilityServiceUtils;
@@ -50,16 +48,16 @@ public class AccessibilityServiceTool {
         }
     }
 
-    private static final String cmd = "enabled=$(settings get secure enabled_accessibility_services)\n" +
+    private static final String cmd = "enabled=$(settings get secure enabled_accessibility_services_fun)\n" +
             "pkg=%s\n" +
             "if [[ $enabled == *$pkg* ]]\n" +
             "then\n" +
             "echo already_enabled\n" +
             "else\n" +
             "enabled=$pkg:$enabled\n" +
-            "settings put secure enabled_accessibility_services $enabled\n" +
+            "settings put secure enabled_accessibility_services_fun $enabled\n" +
             "fi\n" +
-            "settings put secure accessibility_enabled 1";
+            "settings put secure accessibility_enabled_fun 1";
     private static final Pattern SERVICE_PATTERN = Pattern.compile("^(\\w+\\.?)+/((\\w+.)|(\\.\\w+))+$");
 
     public static boolean enableAccessibilityServiceByRoot() {

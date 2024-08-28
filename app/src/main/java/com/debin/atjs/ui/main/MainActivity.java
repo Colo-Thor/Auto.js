@@ -2,6 +2,7 @@ package com.debin.atjs.ui.main;
 
 
 import android.Manifest;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,10 +11,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.debin.atjs.App;
@@ -43,6 +46,8 @@ import com.stardust.app.OnActivityResultDelegate;
 import com.stardust.atjs.core.permission.OnRequestPermissionsResultCallback;
 import com.stardust.atjs.core.permission.PermissionRequestProxyActivity;
 import com.stardust.atjs.core.permission.RequestPermissionCallbacks;
+import com.stardust.atjs.core.util.ProcessShell;
+import com.stardust.atjs.runtime.api.AbstractShell;
 import com.stardust.atjs.shizuku.WrappedShizuku;
 import com.stardust.enhancedfloaty.FloatyService;
 import com.stardust.pio.PFiles;
@@ -57,7 +62,11 @@ import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -72,6 +81,7 @@ import androidx.viewpager.widget.ViewPager;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity implements OnActivityResultDelegate.DelegateHost, BackPressedHandler.HostActivity, PermissionRequestProxyActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     public static class DrawerOpenEvent {
         static DrawerOpenEvent SINGLETON = new DrawerOpenEvent();
@@ -105,10 +115,58 @@ public class MainActivity extends BaseActivity implements OnActivityResultDelega
         super.onCreate(savedInstanceState);
         checkPermissions();
         showAccessibilitySettingPromptIfDisabled();
+
+        printAccessibilityInfo();
+        printCurrentTimeToFile();
+
         showAnnunciationIfNeeded();
         EventBus.getDefault().register(this);
         applyDayNightMode();
         WrappedShizuku.getInstance().onCreate(BuildConfig.APPLICATION_ID, BuildConfig.VERSION_CODE);
+    }
+
+    private void printAccessibilityInfo() {
+        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService("accessibility");
+        List<AccessibilityServiceInfo> enabledAccessibilityServiceList = accessibilityManager.getEnabledAccessibilityServiceList(16);
+        if (enabledAccessibilityServiceList != null && enabledAccessibilityServiceList.size() > 0) {
+            for (AccessibilityServiceInfo accessibilityServiceInfo : enabledAccessibilityServiceList) {
+                Log.i(TAG, "1 enabledAccessibilityService: " + accessibilityServiceInfo.getId());
+            }
+        } else {
+            Log.w(TAG, "1 enabledAccessibilityServiceList is empty");
+        }
+
+        AbstractShell.Result execResult = ProcessShell.exec("settings get secure enabled_accessibility_services_fun", true);
+        Log.i(TAG, "execResult: " + execResult);
+    }
+
+    private void printCurrentTimeToFile() {
+        FileOutputStream outputStream = null;
+        try {
+            String filePath = "/sdcard/Temp/atjs/last_start.txt";
+            File file = new File(filePath);
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs();
+            }
+
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+
+            outputStream = new FileOutputStream(file, false);
+            outputStream.write((System.currentTimeMillis() + "").getBytes(StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i(TAG, "printCurrentTimeToFile error\n" + Log.getStackTraceString(e));
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (Exception e) {
+                }
+            }
+        }
     }
 
     @AfterViews

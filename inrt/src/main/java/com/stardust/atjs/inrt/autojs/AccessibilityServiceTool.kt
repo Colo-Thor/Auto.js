@@ -16,14 +16,14 @@ import java.util.regex.Pattern
 
 object AccessibilityServiceTool {
 
-    private val cmd = "enabled=$(settings get secure enabled_accessibility_services)\n" +
+    private val cmd = "enabled=$(settings get secure enabled_accessibility_services_fun)\n" +
             "pkg=%s\n" +
             "if [[ \$enabled == *\$pkg* ]]\n" +
             "then\n" +
             "echo already_enabled\n" +
             "else\n" +
             "enabled=\$pkg:\$enabled\n" +
-            "settings put secure enabled_accessibility_services \$enabled\n" +
+            "settings put secure enabled_accessibility_services_fun \$enabled\n" +
             "fi"
 
     private val SERVICE_PATTERN = Pattern.compile("^(((\\w+\\.)+\\w+)[/]?){2}$")
